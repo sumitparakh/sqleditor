@@ -3,5 +3,8 @@
   "private": true,
   "devDependencies": {
     "lerna": "^3.8.0"
+  },
+  "scripts": {
+    "start:ui": "cd packages/sqleditor-ui && npm start"
   }
 }
