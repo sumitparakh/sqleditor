@@ -5,6 +5,7 @@
     "lerna": "^3.8.0"
   },
   "scripts": {
-    "start:ui": "cd packages/sqleditor-ui && npm start"
+    "start:ui": "cd packages/sqleditor-ui && npm run start",
+    "build:ui": "cd packages/sqleditor-ui && npm run build"
   }
 }
