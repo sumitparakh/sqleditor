@@ -32,7 +32,7 @@
               </mat-tree-node>
               <mat-tree-node [style.min-height]="'40px'" *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding
                 matTreeNodePaddingIndent="10px" indent="1" indentUnits="px" matTreeNodeToggleRecursive="false"
-                [style.cursor]="'grab'">
+                [style.cursor]="'move'">
                 <button mat-icon-button [attr.aria-label]="'toggle ' + node.filename" matTreeNodeToggle>
                   <!-- // work, note, web_asset -->
                   <mat-icon class="mat-icon-heart">
