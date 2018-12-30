@@ -1,0 +1,138 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Order Sample</mat-card-title>
+          <mat-card-subtitle>With supporting text below as a natural lead-in to additional content</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12" style="padding:10px;">
+      <mat-card [style.padding-left]="'7px'">
+        <mat-card-header [style.margin-bottom]="'15px'">
+          <mat-card-title [style.margin]="'0 0px'">Databases
+          </mat-card-title>
+          <button mat-icon-button [style.position]="'absolute'" [style.right]="'8px'" [style.top]="'9px'" (click)="addNewDatabase($event)">
+            <mat-icon>add</mat-icon>
+          </button>
+          <!-- <mat-card-subtitle>Databases</mat-card-subtitle> -->
+        </mat-card-header>
+        <mat-card-content>
+          <!-- <div class="row"> -->
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+              <mat-tree-node [style.min-height]="'40px'" *matTreeNodeDef="let node" matTreeNodePadding
+                matTreeNodePaddingIndent="10px" indent="1" indentUnits="px">
+                <button mat-icon-button disabled></button>
+                <i [class]="'fa fa-columns'"></i> &nbsp;
+                {{ node.item }}
+              </mat-tree-node>
+              <mat-tree-node [style.min-height]="'40px'" *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding
+                matTreeNodePaddingIndent="10px" indent="1" indentUnits="px" matTreeNodeToggleRecursive="false"
+                [style.cursor]="'grab'">
+                <button mat-icon-button [attr.aria-label]="'toggle ' + node.filename" matTreeNodeToggle>
+                  <!-- // work, note, web_asset -->
+                  <mat-icon class="mat-icon-heart">
+                    {{treeControl.isExpanded(node) ? 'remove_circle_outline' : 'add_circle_outline'}}
+                  </mat-icon>
+                </button>
+                <i [class]="'fa fa-' + (node.level === 0 ? 'database' : 'table')"></i> &nbsp;
+                {{node.item}}
+                <mat-progress-bar *ngIf="node.isLoading" mode="indeterminate" class="example-tree-progress-bar"></mat-progress-bar>
+              </mat-tree-node>
+            </mat-tree>
+          </div>
+          <!-- </div> -->
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <br>
+            <label for="" class="sql-note">Sample data is taken from <a target="_blank" href="https://s3.ap-south-1.amazonaws.com/visualize-v1-dev/orders-sample.csv">here</a>
+            </label>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12" style="padding: 10px;">
+      <mat-card>
+        <mat-card-content>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <mat-tab-group #queryTabGroup color="primary" backgroundColor="" [selectedIndex]="queryEditor.length-1">
+                <mat-tab #queryTab *ngFor="let queryeditor of queryEditor; let i = index;">
+                  <ng-template mat-tab-label>
+                    <span>{{ queryeditor.name + ' ' + (i+1) }}</span>
+                  </ng-template>
+                  <ng-template matTabContent>
+                    <mat-form-field class="queryTextArea" floatLabel="never">
+                      <textarea matInput placeholder="Query" [rows]="queryeditor.textAreaRows ? queryeditor.textAreaRows : 10"></textarea>
+                      <mat-hint align="start">Write your query here</mat-hint>
+                    </mat-form-field>
+                    <button *ngIf="queryTab.isActive" mat-mini-fab color="primary" class="add-tab-btn" (click)="addQueryEditor($event)">
+                      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+                    </button>
+                  </ng-template>
+                </mat-tab>
+              </mat-tab-group>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card><br />
+      <mat-card>
+        <mat-card-content>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <mat-tab-group>
+                <mat-tab label="Result">
+                  <div class="query-result">
+                    <table mat-table [dataSource]="tableSource" class="mat-elevation-z8">
+
+                      <!--- Note that these columns can be defined in any order.
+                                The actual rendered columns are set as a property on the row definition" -->
+
+                      <!-- Position Column -->
+                      <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                      </ng-container>
+
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                      </ng-container>
+
+                      <!-- Weight Column -->
+                      <ng-container matColumnDef="weight">
+                        <th mat-header-cell *matHeaderCellDef> Weight </th>
+                        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                      </ng-container>
+
+                      <!-- Symbol Column -->
+                      <ng-container matColumnDef="symbol">
+                        <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                      </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+
+
+                    <!-- No result to show. -->
+                  </div>
+                </mat-tab>
+                <mat-tab label="History" title="Query History">
+                  <div class="query-result">
+                    History
+                  </div>
+                </mat-tab>
+              </mat-tab-group>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

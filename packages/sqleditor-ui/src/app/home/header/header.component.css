@@ -1,0 +1,60 @@
+header.header {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.header-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+.header-is-mobile .header-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+.header-app-name-tag {
+  font-size: 11px;
+}
+
+.header-icon {
+  padding: 0 14px;
+}
+
+.header-spacer {
+  flex: 1 1 auto;
+}
+
+.app-sidebar {
+  flex: 1;
+  /* overflow: hidden; */
+  /* height: 100%; */
+}
+
+
+::ng-deep .sidenav-container {
+  flex: 1;
+  /* height: 100%; */
+}
+
+::ng-deep .header-is-mobile .main-content {
+  background-color: transparent;
+  margin-top: 0px;
+}
+/*
+.header-is-mobile .sidenav-container {
+  flex: 1 0 auto;
+} */
+
+::ng-deep .main-content {
+  background-color: transparent;
+  margin-top: 6px;
+}
+
+

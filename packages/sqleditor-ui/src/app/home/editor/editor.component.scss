@@ -1,0 +1,42 @@
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+.add-tab-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px
+}
+
+.queryTextArea {
+  width: 100%;
+  height: 100%;
+}
+
+.query-result {
+  padding: 10px;
+}
+
+.sql-note {
+  font-size: 12px;
+}
+
+.fa-database {
+  font-size: 18px;
+}
+
+.fa-table {
+  padding-top: 2px;
+  font-size: 22px;
+}
+
+table {
+  width: 100%;
+}
