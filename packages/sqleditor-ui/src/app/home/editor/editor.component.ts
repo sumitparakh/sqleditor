@@ -1,158 +1,11 @@
-import { Component, OnInit, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, merge } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { CollectionViewer, SelectionChange } from '@angular/cdk/collections';
-import { map } from 'rxjs/operators';
-import { QueryEditor, Table, Database, Column } from 'src/app/utilities/types';
+import { QueryEditor, Table, Database, Column, DynamicFlatNode } from 'src/app/utilities/types';
 import { IDatabaseService } from 'src/app/services/idatabase.service';
 import * as faker from 'faker';
-/**
- * Json node data with nested structure. Each node has a filename and a value or a list of children
- */
-export class FileNode {
-  children: FileNode[];
-  filename: string;
-  type: any;
-}
-
-/** Flat node with expandable and level information */
-export class DynamicFlatNode {
-  constructor(
-    public item: string,
-    public level = 1,
-    public expandable = false,
-    public isLoading = false
-  ) {}
-}
-
-/**
- * Database for dynamic data. When expanding a node in the tree, the data source will need to fetch
- * the descendants data from the database.
- */
-export class DynamicDatabase {
-  dataMap = new Map<string, string[]>([
-    ['Fruits', ['Apple', 'Orange', 'Banana']],
-    ['Vegetables', ['Tomato', 'Potato', 'Onion']],
-    ['Apple', ['Fuji', 'Macintosh']],
-    ['Onion', ['Yellow', 'White', 'Purple']]
-  ]);
-
-  rootLevelNodes: string[] = ['Fruits'];
-
-  /** Initial data from database */
-  initialData(): DynamicFlatNode[] {
-    return this.rootLevelNodes.map(name => new DynamicFlatNode(name, 0, true));
-  }
-
-  getChildren(node: string): string[] | undefined {
-    return this.dataMap.get(node);
-  }
-
-  isExpandable(node: string): boolean {
-    return this.dataMap.has(node);
-  }
-}
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
-
-@Injectable()
-export class DynamicDataSource {
-  dataChange = new BehaviorSubject<DynamicFlatNode[]>([]);
-
-  get data(): DynamicFlatNode[] {
-    return this.dataChange.value;
-  }
-  set data(value: DynamicFlatNode[]) {
-    this.treeControl.dataNodes = value;
-    this.dataChange.next(value);
-  }
-
-  constructor(
-    private treeControl: FlatTreeControl<DynamicFlatNode>,
-    private database: DynamicDatabase
-  ) {}
-
-  connect(collectionViewer: CollectionViewer): Observable<DynamicFlatNode[]> {
-    this.treeControl.expansionModel.onChange.subscribe(change => {
-      if (
-        (change as SelectionChange<DynamicFlatNode>).added ||
-        (change as SelectionChange<DynamicFlatNode>).removed
-      ) {
-        this.handleTreeControl(change as SelectionChange<DynamicFlatNode>);
-      }
-    });
-
-    return merge(collectionViewer.viewChange, this.dataChange).pipe(
-      map(() => this.data)
-    );
-  }
-
-  /** Handle expand/collapse behaviors */
-  handleTreeControl(change: SelectionChange<DynamicFlatNode>) {
-    if (change.added) {
-      change.added.forEach(node => this.toggleNode(node, true));
-    }
-    if (change.removed) {
-      change.removed
-        .slice()
-        .reverse()
-        .forEach(node => this.toggleNode(node, false));
-    }
-  }
-
-  /**
-   * Toggle the node, remove from display list
-   */
-  toggleNode(node: DynamicFlatNode, expand: boolean) {
-    const children = this.database.getChildren(node.item);
-    const index = this.data.indexOf(node);
-    console.log(index);
-    if (!children || index < 0) {
-      // If no children, or cannot find the node, no op
-      return;
-    }
-
-    if (expand) {
-      const nodes = children.map(
-        name =>
-          new DynamicFlatNode(
-            name,
-            node.level + 1,
-            this.database.isExpandable(name)
-          )
-      );
-      this.data.splice(index + 1, 0, ...nodes);
-    } else {
-      let count = 0;
-      for (
-        let i = index + 1;
-        i < this.data.length && this.data[i].level > node.level;
-        i++, count++
-      ) {}
-      this.data.splice(index + 1, count);
-    }
-
-    // notify the change
-    this.dataChange.next(this.data);
-  }
-}
+import { DynamicDatabase } from 'src/app/utilities/tree-db.class';
+import { DynamicDataSource } from 'src/app/services/dynamic-data-source.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-editor',
@@ -163,7 +16,7 @@ export class DynamicDataSource {
 export class EditorComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  tableSource = ELEMENT_DATA;
+  tableSource = [];
 
   treeControl: FlatTreeControl<DynamicFlatNode>;
 
@@ -244,7 +97,7 @@ export class EditorComponent implements OnInit {
 
   getMockedDatabase(random = false) {
     return {
-      name: random ? faker.lorem.word() : 'MockedDB',
+      name: random ? faker.lorem.word() : 'order_sample_db',
       tables: [
         {
           name: random ? faker.lorem.word() : 'order_sample',
