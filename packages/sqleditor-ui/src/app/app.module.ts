@@ -9,13 +9,21 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { EditorComponent } from './home/editor/editor.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ResultComponent } from './home/editor/result/result.component';
+import { HistoryComponent } from './home/editor/history/history.component';
+import { QueryComponent } from './home/editor/query/query.component';
+import { SidebarComponent } from './home/editor/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    EditorComponent
+    EditorComponent,
+    ResultComponent,
+    HistoryComponent,
+    QueryComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

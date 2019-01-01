@@ -1,0 +1,41 @@
+<mat-card [style.padding-left]="'7px'">
+  <mat-card-header [style.margin-bottom]="'15px'">
+    <mat-card-title [style.margin]="'0 0px'">Databases
+    </mat-card-title>
+    <button mat-icon-button [style.position]="'absolute'" [style.right]="'8px'" [style.top]="'9px'" (click)="addNewDatabase($event)">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+
+    <!-- <div class="row"> -->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node [style.min-height]="'40px'" *matTreeNodeDef="let node" matTreeNodePadding
+          matTreeNodePaddingIndent="10px" indent="1" indentUnits="px">
+          <button mat-icon-button disabled></button>
+          <i [class]="'fa fa-columns'"></i> &nbsp;
+          {{ node.item }}
+        </mat-tree-node>
+        <mat-tree-node [style.min-height]="'40px'" *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding
+          matTreeNodePaddingIndent="10px" indent="1" indentUnits="px" matTreeNodeToggleRecursive="false" [style.cursor]="'move'">
+          <button mat-icon-button [attr.aria-label]="'toggle ' + node.filename" matTreeNodeToggle>
+            <!-- // work, note, web_asset -->
+            <mat-icon class="mat-icon-heart">
+              {{treeControl.isExpanded(node) ? 'remove_circle_outline' : 'add_circle_outline'}}
+            </mat-icon>
+          </button>
+          <i [class]="'fa fa-' + (node.level === 0 ? 'database' : 'table')"></i> &nbsp;
+          {{node.item}}
+          <mat-progress-bar *ngIf="node.isLoading" mode="indeterminate" class="example-tree-progress-bar"></mat-progress-bar>
+        </mat-tree-node>
+      </mat-tree>
+    </div>
+    <!-- </div> -->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <br>
+      <label for="" class="sql-note">Sample data is taken from <a target="_blank" href="https://s3.ap-south-1.amazonaws.com/visualize-v1-dev/orders-sample.csv">here</a>
+      </label>
+    </div>
+  </mat-card-content>
+</mat-card>

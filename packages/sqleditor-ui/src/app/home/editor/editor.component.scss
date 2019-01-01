@@ -9,23 +9,8 @@
   list-style-type: none;
 }
 
-.add-tab-btn {
-  position: absolute;
-  right: 10px;
-  bottom: 10px
-}
-
-.queryTextArea {
-  width: 100%;
-  height: 100%;
-}
-
 .query-result {
   padding: 10px;
-}
-
-.sql-note {
-  font-size: 12px;
 }
 
 .fa-database {
@@ -39,4 +24,14 @@
 
 table {
   width: 100%;
+}
+
+.editor-toolbar {
+  background-color: white;
+  border: 1px solid #ddd;
+}
+
+.editor-toolbar button{
+  border:  1px solid #bbb;
+  margin: 5px;
 }
