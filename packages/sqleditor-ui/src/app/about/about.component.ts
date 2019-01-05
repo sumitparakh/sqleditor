@@ -12,11 +12,11 @@ import { Router } from '@angular/router';
         <a href="https://github.com/sumitparakh" target="_blank"
           >Sumit Parakh</a
         >
-        for both Developers & Database Admins
+        for both Developers & Database Admins.
       </p>
       <p>
-        Currently in beta release and only for presentation purpose. UI & UX
-        might change in final release
+        Currently in beta release and only for presentation purpose.
+        UI & UX might change in final release.
       </p>
       <p>Build: <a href="https://github.com/sumitparakh/sqleditor" target="_blank">master</a></p>
     </div>
