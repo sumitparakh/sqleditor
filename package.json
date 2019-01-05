@@ -6,6 +6,12 @@
   },
   "scripts": {
     "start:ui": "cd packages/sqleditor-ui && npm run start",
-    "build:ui": "cd packages/sqleditor-ui && npm run build"
+    "build:ui": "cd packages/sqleditor-ui && npm run build",
+    "package:app:win32:ia32": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:win:ia32",
+    "package:app:win32:x64": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:win:x64",
+    "package:app:linux:x64": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:linux:x64",
+    "package:app:linux:ia32": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:linux:ia32",
+    "package:app:linux:arm64": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:win:x64",
+    "package:app:darwin:x64": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:win:x64"
   }
 }
