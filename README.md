@@ -39,6 +39,9 @@ Ofcourse every framework has its own pros and cons. But since, I'm mostly experi
 | [sqleditor-app](https://github.com/sumitparakh/sqleditor/tree/master/packages/sqleditor-app) | [![SqlEditor App](https://img.shields.io/badge/version-1.0.0-yellowgreen.svg)](https://github.com/sumitparakh/sqleditor/tree/master/packages/sqleditor-app) | The electron shell host for the sqleditor application.                                 |
 | [sqleditor-ui](https://github.com/sumitparakh/sqleditor/tree/master/packages/sqleditor-ui)   | [![SqlEditor UI](https://img.shields.io/badge/version-1.0.0-yellowgreen.svg)](https://github.com/sumitparakh/sqleditor/tree/master/packages/sqleditor-ui)   | The core application: the sqleditor web app. This app is built using the @angular/cli. |
 
+
+<br><br>
+
 ### How to run locally
 
 1. Clone repo and install dependencies (`lerna bootstrap` or `npm install`).
@@ -47,25 +50,37 @@ Ofcourse every framework has its own pros and cons. But since, I'm mostly experi
 
 ### How to package the application
 
-For OSX
+<a href="http://www.mediafire.com/folder/44l94vf21q7of/sqleditor">Download All In One</a>
 
-1. Build darwin build(x64) for desktop app `npm run package:app:darwin:x64`
 
-<br>
-
-For Window
+<u><strong>For Window</strong></u>
 
 1. Build windows build(ia32) for desktop app `npm run package:app:win32:ia32`
 2. Build windows build(x64) for desktop app `npm run package:app:win32:x64`
 
-<br>
+<a href="http://www.mediafire.com/folder/38p4e6uh03e7q/sqleditor-win32-x64">Download windows app(win64)</a><br>
+<a href="http://www.mediafire.com/folder/b3tt999v9gb1h/sqleditor-win32-ia32">Download windows app(ia32)</a>
 
-For Linux
+<br/>
+
+<u><strong>For OSX</strong></u>
+
+1. Build darwin build(x64) for desktop app `npm run package:app:darwin:x64`
+
+<a href="http://www.mediafire.com/folder/cxtcilccijpdt/sqleditor-darwin-x64">Download darwin app(x64)</a><br><br>
+
+<u><strong>For Linux</strong></u>
 
 1. Build linux build(x64) for desktop app `npm run package:app:linux:x64`
 2. Build linux build(ia32) for desktop app `npm run package:app:linux:ia32`
 3. Build linux build(arm64) for desktop app `npm run package:app:linux:arm64`
 
+<a href="http://www.mediafire.com/folder/q9dk8sky6obsp/sqleditor-linux-x64">Download linux app(x64)</a><br>
+<a href="http://www.mediafire.com/folder/o1fbv8xsi84ew/sqleditor-linux-ia32">Download linux app(ia32)</a><br>
+<a href="http://www.mediafire.com/folder/4mew651qib536/sqleditor-linux-arm642">Download linux app(arm64)</a>
+
+
+<br><br>
 You are welcome to contribute to this project. This project is in its early stage, no feature is frozen yet. All suggestions/fixes/help are more than welcome. Raise your issue or feature request <a href="https://github.com/sumitparakh/sqleditor/issues/new" target="_blank">here</a>
 
 Please contact me ([@sumitparakh](https://twitter.com/sumitparak)) if you need some help getting started with the setup.
