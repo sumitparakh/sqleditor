@@ -9,9 +9,19 @@
   <img src="https://img.shields.io/badge/app-running-green.svg" />
   </a>
 </p>
+<br/>
+Web Application (<a href="https://competent-shaw-8b7294.netlify.com/">Visit here</a>)
 
 <p align="center">
-  <img align="center" src="https://raw.githubusercontent.com/sumitparakh/sqleditor/d26faaa666a80f6ef93e57884bc181fe3eff71b8/packages/sqleditor-ui/screenshot.png"/>
+<a href="https://competent-shaw-8b7294.netlify.com/">
+  <img align="center" target="_blank" src="https://raw.githubusercontent.com/sumitparakh/sqleditor/d26faaa666a80f6ef93e57884bc181fe3eff71b8/packages/sqleditor-ui/screenshot.png"/>
+  </a>
+</p>
+Desktop application
+<p align="center">
+<a href="http://www.mediafire.com/folder/44l94vf21q7of/sqleditor">
+<img align="center" src="https://raw.githubusercontent.com/sumitparakh/sqleditor/master/packages/sqleditor-app/screenshot.png" />
+</a>
 </p>
 
 <hr>
@@ -39,7 +49,6 @@ Ofcourse every framework has its own pros and cons. But since, I'm mostly experi
 | [sqleditor-app](https://github.com/sumitparakh/sqleditor/tree/master/packages/sqleditor-app) | [![SqlEditor App](https://img.shields.io/badge/version-1.0.0-yellowgreen.svg)](https://github.com/sumitparakh/sqleditor/tree/master/packages/sqleditor-app) | The electron shell host for the sqleditor application.                                 |
 | [sqleditor-ui](https://github.com/sumitparakh/sqleditor/tree/master/packages/sqleditor-ui)   | [![SqlEditor UI](https://img.shields.io/badge/version-1.0.0-yellowgreen.svg)](https://github.com/sumitparakh/sqleditor/tree/master/packages/sqleditor-ui)   | The core application: the sqleditor web app. This app is built using the @angular/cli. |
 
-
 <br><br>
 
 ### How to run locally
@@ -52,13 +61,13 @@ Ofcourse every framework has its own pros and cons. But since, I'm mostly experi
 
 <a href="http://www.mediafire.com/folder/44l94vf21q7of/sqleditor">Download All In One</a>
 
-
 <u><strong>For Window</strong></u>
 
 1. Build windows build(ia32) for desktop app `npm run package:app:win32:ia32`
 2. Build windows build(x64) for desktop app `npm run package:app:win32:x64`
 
 <a href="http://www.mediafire.com/folder/38p4e6uh03e7q/sqleditor-win32-x64">Download windows app(win64)</a><br>
+
 <a href="http://www.mediafire.com/folder/b3tt999v9gb1h/sqleditor-win32-ia32">Download windows app(ia32)</a>
 
 <br/>
@@ -76,9 +85,10 @@ Ofcourse every framework has its own pros and cons. But since, I'm mostly experi
 3. Build linux build(arm64) for desktop app `npm run package:app:linux:arm64`
 
 <a href="http://www.mediafire.com/folder/q9dk8sky6obsp/sqleditor-linux-x64">Download linux app(x64)</a><br>
-<a href="http://www.mediafire.com/folder/o1fbv8xsi84ew/sqleditor-linux-ia32">Download linux app(ia32)</a><br>
-<a href="http://www.mediafire.com/folder/4mew651qib536/sqleditor-linux-arm642">Download linux app(arm64)</a>
 
+<a href="http://www.mediafire.com/folder/o1fbv8xsi84ew/sqleditor-linux-ia32">Download linux app(ia32)</a><br>
+
+<a href="http://www.mediafire.com/folder/4mew651qib536/sqleditor-linux-arm642">Download linux app(arm64)</a>
 
 <br><br>
 You are welcome to contribute to this project. This project is in its early stage, no feature is frozen yet. All suggestions/fixes/help are more than welcome. Raise your issue or feature request <a href="https://github.com/sumitparakh/sqleditor/issues/new" target="_blank">here</a>
