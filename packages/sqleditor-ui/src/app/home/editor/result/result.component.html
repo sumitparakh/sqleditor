@@ -1,0 +1,28 @@
+<div class="result-label" *ngIf="!displayedColumns || displayedColumns.length===0">
+  No result to show.
+</div>
+<div class="result-container" *ngIf="displayedColumns && displayedColumns.length>0">
+
+  <mat-form-field class="search-result">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search something...">
+  </mat-form-field>
+
+  <div class="" >
+    <div class="col-md-12">
+      <table mat-table [dataSource]="tableSource" class="mat-elevation-z8" [style.margin-bottom]="'10px'">
+
+        <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+          <th mat-header-cell *matHeaderCellDef> {{ column }} </th>
+          <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+  <!-- No result to show. -->
+</div>

@@ -1,20 +1,28 @@
 <header class="header" [class.header-is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="header-toolbar">
-    <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
     <h1 class="header-app-name">{{ appName }}
       <span class="header-app-name-tag">
         For Data Geeks
       </span>
     </h1>
     <span class="header-spacer"></span>
-    <mat-icon class="header-icon">help</mat-icon>
+    <button mat-icon-button id="minimize" *ngIf="isElectron">
+      <mat-icon>minimize</mat-icon>
+    </button>
+    <button mat-icon-button id="restore" *ngIf="isElectron">
+      <mat-icon>filter_none</mat-icon>
+    </button>
+    <button mat-icon-button id="maximize" *ngIf="isElectron">
+      <mat-icon>crop_square</mat-icon>
+    </button>
+    <button mat-icon-button id="close" *ngIf="isElectron">
+      <mat-icon>close</mat-icon>
+    </button>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="about($event)">
         <mat-icon>help</mat-icon>
         <span>About</span>
       </button>
@@ -23,17 +31,6 @@
 
   <!-- <app-sidebar class="app-sidebar" [mobileQuery]="mobileQuery"  [class.header-is-mobile]="mobileQuery.matches"  #sidebar></app-sidebar> -->
   <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="56">
-    <mat-sidenav #snav [mode]="'over'" [fixedInViewport]="mobileQuery.matches" [(opened)]="opened" fixedTopGap="56"
-      class="sidebar-content">
-      <mat-nav-list>
-        <mat-list-item>item</mat-list-item>
-        <mat-list-item>item</mat-list-item>
-        <mat-list-item>item</mat-list-item>
-        <mat-list-item>item</mat-list-item>
-        <mat-list-item>item</mat-list-item>
-      </mat-nav-list>
-    </mat-sidenav>
-
     <mat-sidenav-content class="main-content">
       <app-editor></app-editor>
     </mat-sidenav-content>

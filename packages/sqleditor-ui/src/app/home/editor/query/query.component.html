@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <mat-tab-group #queryTabGroup color="primary" backgroundColor="" [selectedIndex]="queryEditor.length-1">
+      <mat-tab #queryTab *ngFor="let queryeditor of queryEditor; let i = index;">
+        <ng-template mat-tab-label>
+          <span>{{ queryeditor.name + ' ' + (i+1) }}</span>
+        </ng-template>
+        <ng-template matTabContent>
+          <mat-form-field class="queryTextArea" floatLabel="never">
+            <textarea matInput placeholder="Query" [(ngModel)]="queryeditor.query" (keyup)="updateLocalStorage($event);"
+              [rows]="queryeditor.textAreaRows ? queryeditor.textAreaRows : 10">{{ queryeditor.query }}</textarea>
+            <mat-hint align="start">Write your query here</mat-hint>
+          </mat-form-field>
+          <button *ngIf="queryTab.isActive" mat-mini-fab color="primary" class="add-tab-btn" (click)="addQueryEditor($event)">
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          </button>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
