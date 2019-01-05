@@ -18,19 +18,16 @@
 <br/>
 
 <h2>Web Framework</h2>
-<hr/>
 <strong><a href="https://angular.io" target="_blank">Angular Framework</a></strong> is used to build UI(front end) of both web & desktop version of this project. Having a vast community and an in-built set of libraries, Angular provides you a rapid development experience.
 
 Ofcourse every framework has its own pros and cons. But since, I'm mostly experienced in Angular, so I would personally prefer Angular to build web and PWA app, and React to build mobile apps ;) .
 <br/>
 
 <h2>Desktop Application Library</h2>
-<hr/>
 <strong><a href="https://electronjs.org" target="_blank">Electron</a></strong> is used to create desktop build & packages of this project. It provides very rich set of system tools & libraries to build cross-platform desktop application from angular front-end framework.
 
 <br/>
 <h2>JavaScript Application Package Manager</h2>
-<hr/>
 <strong><a href="https://lernajs.io/" target="_blank">Lerna</a></strong> is a tool for managing JavaScript projects with multiple packages.It optimizes the workflow around managing multi-package repositories with git and npm.
 
 <br/>
