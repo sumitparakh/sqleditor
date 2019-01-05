@@ -49,8 +49,29 @@ Ofcourse every framework has its own pros and cons. But since, I'm mostly experi
 | [sqleditor-app](https://github.com/sumitparakh/sqleditor/tree/master/packages/sqleditor-app) | [![SqlEditor App](https://img.shields.io/badge/version-1.0.0-yellowgreen.svg)](https://github.com/sumitparakh/sqleditor/tree/master/packages/sqleditor-app) | The electron shell host for the sqleditor application.                                 |
 | [sqleditor-ui](https://github.com/sumitparakh/sqleditor/tree/master/packages/sqleditor-ui)   | [![SqlEditor UI](https://img.shields.io/badge/version-1.0.0-yellowgreen.svg)](https://github.com/sumitparakh/sqleditor/tree/master/packages/sqleditor-ui)   | The core application: the sqleditor web app. This app is built using the @angular/cli. |
 
-<br><br>
+<br>
 
+<h2>Features</h2>
+
+1. Run simple select queryies (eg. `select * from order_sample` or `select <col-1>, <col-2> from order_sample`). Current SQL parse is built based on mocked data and a fake json sql server, so. Based on data platform, parsing can be enhanced in future accordingly.
+
+2. You can `create as many query editor as you want`. Query will be executed from currently active query editor tab.
+
+3. `Save as you type`. Whatever you write in query editor will be saved as you type. So in case, if you accidentally reload the page, query won't get lost.
+
+4. `Maintains history of succesful/failed query`. Currenty the history is not dynamic so it will be cleared on page reload.    
+
+     You can even run any succesful query from your history list. So <strong>no need to type your query again</strong>.
+
+5. `Filter your query result`. A search textbox is provided so that you can search anything from query result, irrespective of columns or data types.
+
+6. `Reset query editor`. Suppose you have created 7 query tabs and now you want to reset it to the default stage. Then reset query button allows you to do it. Just click to reset button given in the toolbar.
+
+7. `Run query` from active query tab `by either a shortcut (Ctrl+Shift+E) or execute button click` from toolbar.
+
+8. `Dynamically add more mocking databases` on sidebar.
+
+<br>
 ### How to run locally
 
 1. Clone repo and install dependencies (`lerna bootstrap` or `npm install`).
