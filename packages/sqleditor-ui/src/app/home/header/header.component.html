@@ -6,11 +6,23 @@
       </span>
     </h1>
     <span class="header-spacer"></span>
-    <button mat-icon-button [matMenuTriggerFor]="menu" >
+    <button mat-icon-button id="minimize" *ngIf="isElectron">
+      <mat-icon>minimize</mat-icon>
+    </button>
+    <button mat-icon-button id="restore" *ngIf="isElectron">
+      <mat-icon>filter_none</mat-icon>
+    </button>
+    <button mat-icon-button id="maximize" *ngIf="isElectron">
+      <mat-icon>crop_square</mat-icon>
+    </button>
+    <button mat-icon-button id="close" *ngIf="isElectron">
+      <mat-icon>close</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item  (click)="about($event)">
+      <button mat-menu-item (click)="about($event)">
         <mat-icon>help</mat-icon>
         <span>About</span>
       </button>

@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
+import { ElectronService } from 'src/app/services/electron.service';
 
 @Component({
   selector: 'app-header',
@@ -8,21 +9,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-
   appName = 'SQL Editor';
   mobileQuery: MediaQueryList;
   opened = false;
+  isElectron = false;
 
-  private _mobileQueryListener: ()  => void;
+  private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private router: Router) {
+  constructor(
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher,
+    private router: Router,
+    private electron: ElectronService
+  ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+    this.isElectron = this.electron.isElectron();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   /**
    * Called once, before the instance is destroyed. Returns nothing
@@ -34,5 +40,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
   about(event) {
     this.router.navigate(['about']);
   }
-
 }

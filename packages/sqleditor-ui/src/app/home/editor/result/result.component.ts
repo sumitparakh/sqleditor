@@ -61,7 +61,7 @@ export class ResultComponent implements OnInit {
       (data: QueryData) => {
         if (data.result['error']) {
           this.displayError(
-            data.result['error'] + '. Display mock data.',
+            data.result['error'] + '. Displaying mock data.',
             data.query
           );
           this.onQueryExecutedHandler(
