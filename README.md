@@ -1,2 +1,2 @@
 # sqleditor
-SQL Editor for data geeks
+SQL Editor for data geeks.
