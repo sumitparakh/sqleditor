@@ -61,7 +61,9 @@ Ofcourse every framework has its own pros and cons. But since, I'm mostly experi
 
 <a href="http://www.mediafire.com/folder/44l94vf21q7of/sqleditor">Download All In One</a>
 
-<u><strong>For Window</strong></u>
+<u><strong>For Windows</strong></u>
+
+<strong>Note:</strong> I'm using Windows 10 (x64) so the windows build is tested.
 
 1. Build windows build(ia32) for desktop app `npm run package:app:win32:ia32`
 2. Build windows build(x64) for desktop app `npm run package:app:win32:x64`
@@ -74,11 +76,18 @@ Ofcourse every framework has its own pros and cons. But since, I'm mostly experi
 
 <u><strong>For OSX</strong></u>
 
+<strong>Note:</strong> Should work but not tested. Let me know if you face any issue. I'll try and fix. Or if you are a mac user and want to fix it yourself? Pull requets are always appreciated.
+
+
 1. Build darwin build(x64) for desktop app `npm run package:app:darwin:x64`
 
 <a href="http://www.mediafire.com/folder/cxtcilccijpdt/sqleditor-darwin-x64">Download darwin app(x64)</a><br><br>
 
 <u><strong>For Linux</strong></u>
+
+<strong>Note:</strong> Should work but not tested. Let me know if you face any issue. I'll try and fix. Or if you are a mac user and want to fix it yourself? Pull requets are always appreciated.
+
+
 
 1. Build linux build(x64) for desktop app `npm run package:app:linux:x64`
 2. Build linux build(ia32) for desktop app `npm run package:app:linux:ia32`
