@@ -1,6 +1,6 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatIconModule,
   MatToolbarModule,
@@ -15,14 +15,16 @@ import {
   MatProgressBarModule,
   MatTabsModule,
   MatButtonToggleModule,
-  MatTableModule
+  MatTableModule,
+  MatPaginatorModule,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MatSnackBarModule,
+  MatDialogModule
 } from '@angular/material';
+import { AboutComponent, DialogOverviewExampleDialogComponent } from './about/about.component';
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule],
   exports: [
-    BrowserAnimationsModule,
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -37,6 +39,12 @@ import {
     MatTabsModule,
     MatButtonToggleModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSnackBarModule,
+    MatDialogModule,
+  ],
+  providers: [
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
   ]
 })
 export class MatModule {}

@@ -1,11 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FlatTreeControl } from '@angular/cdk/tree';
-import { QueryEditor, Table, Database, Column, DynamicFlatNode } from 'src/app/utilities/types';
-import { IDatabaseService } from 'src/app/services/idatabase.service';
-import * as faker from 'faker';
+import {
+  Component,
+  HostListener,
+  ViewChild,
+  ElementRef,
+  Output,
+  EventEmitter
+} from '@angular/core';
+import { QueryEditor } from 'src/app/utilities/types';
 import { DynamicDatabase } from 'src/app/utilities/tree-db.class';
-import { DynamicDataSource } from 'src/app/services/dynamic-data-source.service';
-import { Observable } from 'rxjs';
+import { QueryService } from 'src/app/services/query.service';
+import { QueryComponent } from './query/query.component';
+import { HistoryService } from 'src/app/services/history.service';
+import { Subject } from 'rxjs';
+import { History } from './history/history.component';
 
 @Component({
   selector: 'app-editor',
@@ -13,18 +20,39 @@ import { Observable } from 'rxjs';
   styleUrls: ['./editor.component.scss'],
   providers: [DynamicDatabase]
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent {
+  @ViewChild(QueryComponent) queryComponent: QueryComponent;
+  @ViewChild('historyCountLabel') historyCountLabel: ElementRef;
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  tableSource = [];
-
-  constructor() {
-
+  constructor(
+    private queryService: QueryService,
+    private historyService: HistoryService
+  ) {
+    this.historyService.OnHistoryUpdated.subscribe((data: History[]) => {
+      this.historyCountLabel.nativeElement.innerText = '' + data.length;
+    });
   }
 
-  ngOnInit() {}
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.ctrlKey && event.shiftKey && event.key === 'E') {
+      console.log('shortcut');
+      this.execute();
+    }
+  }
 
-  onClick(event) {
-    alert('hello');
+  executeQuery(event) {
+    console.log('execute query');
+    this.execute();
+  }
+
+  execute() {
+    const queryData: QueryEditor = this.queryComponent.getActiveTabContent();
+    const query: string = queryData.query.trim();
+    this.queryService.executeQuery(query);
+  }
+
+  clearQueryEditor(event) {
+    this.queryComponent.resetQueryEditor();
   }
 }

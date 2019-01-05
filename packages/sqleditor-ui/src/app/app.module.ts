@@ -13,6 +13,13 @@ import { ResultComponent } from './home/editor/result/result.component';
 import { HistoryComponent } from './home/editor/history/history.component';
 import { QueryComponent } from './home/editor/query/query.component';
 import { SidebarComponent } from './home/editor/sidebar/sidebar.component';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material';
+import { MessageComponent } from './message/message.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MockService } from './utilities/mock.class';
+import { AboutComponent, DialogOverviewExampleDialogComponent } from './about/about.component';
+import { AppRoutingModule } from './app-routing.module';
+import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -23,16 +30,22 @@ import { SidebarComponent } from './home/editor/sidebar/sidebar.component';
     ResultComponent,
     HistoryComponent,
     QueryComponent,
-    SidebarComponent
+    SidebarComponent,
+    MessageComponent,
+    AboutComponent,
+    DialogOverviewExampleDialogComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     MatModule,
     FormsModule,
     HttpClientModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [MatSnackBar, MockService],
+  bootstrap: [AppComponent],
+  entryComponents: [MessageComponent, AppComponent, DialogOverviewExampleDialogComponent]
 })
-export class AppModule { }
+export class AppModule {}

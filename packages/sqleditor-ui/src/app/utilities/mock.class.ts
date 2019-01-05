@@ -1,8 +1,49 @@
 import * as faker from 'faker';
 
 export class MockService {
+  constructor() {}
 
-  constructor() { }
+  getMockedColumns(): string[] {
+    return [
+      'orderID',
+      'productID',
+      'productName',
+      'customerID',
+      'employeeID',
+      'orderDate',
+      'requiredDate',
+      'shippedDate',
+      'shipVia',
+      'freight',
+      'shipName',
+      'shipAddress',
+      'Abbaye',
+      'shipCity',
+      'shipRegion',
+      'shipPostalCode',
+      'shipCountry',
+      'unitPrice',
+      'quantity',
+      'discount'
+    ];
+  }
+
+  getMockedRecords(totalRecords: number = 5, totalColumns: number = 5) {
+    const records =  [], columns = [];
+    for (let column = 0; column < totalColumns; column++) {
+      columns.push(faker.lorem.word());
+    }
+
+    for (let row = 0; row < totalRecords; row++) {
+      const data = {};
+      for (let column = 0; column < totalColumns; column++) {
+        data[columns[column]] = faker.lorem.word();
+      }
+      records.push(data);
+    }
+
+    return records;
+  }
 
   getMockedDatabase(random = false) {
     return {

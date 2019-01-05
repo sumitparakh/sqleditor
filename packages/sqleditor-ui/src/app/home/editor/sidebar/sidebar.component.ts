@@ -23,7 +23,6 @@ export class SidebarComponent implements OnInit {
   treeControl: FlatTreeControl<DynamicFlatNode>;
 
   dataSource: DynamicDataSource;
-  tables: Observable<Table[]>;
   databases: Database[] = [];
 
   getLevel = (node: DynamicFlatNode) => node.level;
@@ -37,11 +36,9 @@ export class SidebarComponent implements OnInit {
     private databaseService: IDatabaseService,
     private mock: MockService
   ) {
-    this.tables = this.databaseService.getDatabases();
     const MockData = this.mock.getMockedDatabase();
     this.databases.push(MockData);
     database.dataMap.clear();
-    this.tables.subscribe((data: any) => console.log(data));
     this.setTreeView();
   }
 

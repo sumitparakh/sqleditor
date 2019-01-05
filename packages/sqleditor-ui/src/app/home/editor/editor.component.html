@@ -3,22 +3,16 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;">
       <mat-toolbar class="editor-toolbar">
         <mat-toolbar-row>
-          <button mat-icon-button color="primary" title="Execute a single/selected query (Ctrl+Shift+E)">
+          <button mat-icon-button color="primary" title="Execute a single/selected query (Ctrl+Shift+E)" (click)="executeQuery($event)">
             <mat-icon class="example-icon">play_arrow</mat-icon>
           </button>
-          <button mat-icon-button [style.color]="'green'" title="Execute all queries in active query editor (Ctrl+Shift+R)">
-            <mat-icon class="example-icon">fast_forward</mat-icon>
+          <button mat-icon-button [style.color]="'#f50'" title="Reset Query Editor (Ctrl+Shift+Q)" (click)="clearQueryEditor($event)">
+            <mat-icon class="example-icon">clear_all</mat-icon>
           </button>
           <!-- <span>Custom Toolbar</span> -->
         </mat-toolbar-row>
         <!-- My App -->
       </mat-toolbar>
-      <!-- <mat-card>
-        <mat-card-header>
-          <mat-card-title>Order Sample</mat-card-title>
-          <mat-card-subtitle>With supporting text below as a natural lead-in to additional content</mat-card-subtitle>
-        </mat-card-header>
-      </mat-card> -->
     </div>
   </div>
   <div class="row">
@@ -39,7 +33,11 @@
                 <mat-tab label="Result">
                   <app-editor-result></app-editor-result>
                 </mat-tab>
-                <mat-tab label="History" title="Query History">
+                <mat-tab title="Query History">
+                  <ng-template mat-tab-label>
+                    History &nbsp;
+                    <span class="badge badge-primary badge-pill" id="historyCount" #historyCountLabel>0</span>
+                  </ng-template>
                   <app-editor-history></app-editor-history>
                 </mat-tab>
               </mat-tab-group>

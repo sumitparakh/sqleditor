@@ -7,7 +7,8 @@
         </ng-template>
         <ng-template matTabContent>
           <mat-form-field class="queryTextArea" floatLabel="never">
-            <textarea matInput placeholder="Query" [rows]="queryeditor.textAreaRows ? queryeditor.textAreaRows : 10"></textarea>
+            <textarea matInput placeholder="Query" [(ngModel)]="queryeditor.query" (keyup)="updateLocalStorage($event);"
+              [rows]="queryeditor.textAreaRows ? queryeditor.textAreaRows : 10">{{ queryeditor.query }}</textarea>
             <mat-hint align="start">Write your query here</mat-hint>
           </mat-form-field>
           <button *ngIf="queryTab.isActive" mat-mini-fab color="primary" class="add-tab-btn" (click)="addQueryEditor($event)">

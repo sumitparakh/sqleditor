@@ -1,3 +1,23 @@
-<div class="query-result">
-  History
+
+<div class="history-label">
+  <span *ngIf="histories.length === 0">
+    History
+  </span>
+  <ul class="list-group" *ngIf="histories.length > 0">
+    <li class="list-group-item d-flex justify-content-between align-items-center {{ history.type }}" *ngFor="let history of histories">
+      <div>
+        <span>
+          <i [ngClass]="history.type === 'success' ? 'fa fa-check-circle' : 'fa fa-times'"></i> &nbsp;
+          {{ history.message }}
+        </span>
+        <!-- <mat-icon matListIcon [ngClass]="history.type">{{ history.type === 'success' ? 'check_circle' : 'highlight_off'
+          }}</mat-icon> -->
+      </div>
+      <button mat-icon-button *ngIf="history.type === 'success'" (click)="executeQuery(history.query)" color="primary">
+        <mat-icon aria-label="Example icon-button with a heart icon">play_arrow</mat-icon>
+      </button>
+      <!-- <span class="badge badge-primary badge-pill">14</span> -->
+    </li>
+  </ul>
+
 </div>

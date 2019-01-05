@@ -1,4 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { HistoryService } from 'src/app/services/history.service';
+import { QueryService } from 'src/app/services/query.service';
+
+export class History {
+  message: string;
+  type: string;
+  query?: string;
+
+  constructor(message: string, type: string, query?: string) {
+    this.message = message;
+    this.type = type;
+    this.query = query;
+  }
+}
 
 @Component({
   selector: 'app-editor-history',
@@ -6,10 +20,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements OnInit {
+  @Input()
+  historyCount: ElementRef;
 
-  constructor() { }
+  histories: History[] = [];
 
-  ngOnInit() {
+  constructor(
+    private historyService: HistoryService,
+    private queryService: QueryService
+  ) {
+    this.historyService.OnHistoryUpdated.subscribe(
+      (data: any) => (this.histories = data)
+    );
   }
 
+  ngOnInit() {}
+
+  executeQuery(query) {
+    this.queryService.executeQuery(query);
+  }
 }

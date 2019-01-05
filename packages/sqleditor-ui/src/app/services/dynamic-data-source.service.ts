@@ -57,7 +57,6 @@ export class DynamicDataSource {
   toggleNode(node: DynamicFlatNode, expand: boolean) {
     const children = this.database.getChildren(node.item);
     const index = this.data.indexOf(node);
-    console.log(index);
     if (!children || index < 0) {
       // If no children, or cannot find the node, no op
       return;
