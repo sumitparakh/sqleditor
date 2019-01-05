@@ -11,7 +11,7 @@
     "package:app:win32:x64": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:win:x64",
     "package:app:linux:x64": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:linux:x64",
     "package:app:linux:ia32": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:linux:ia32",
-    "package:app:linux:arm64": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:win:x64",
-    "package:app:darwin:x64": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:win:x64"
+    "package:app:linux:arm64": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:linux:arm64",
+    "package:app:darwin:x64": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:darwin:x64"
   }
 }
