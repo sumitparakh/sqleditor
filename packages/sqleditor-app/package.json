@@ -14,7 +14,7 @@
   },
   "repository": "https://github.com/sumitparakh/sqleditor",
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "electron": "^3.0.7"
   },
