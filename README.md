@@ -72,6 +72,7 @@ Ofcourse every framework has its own pros and cons. But since, I'm mostly experi
 8. `Dynamically add more mocking databases` on sidebar.
 
 <br>
+
 ### How to run locally
 
 1. Clone repo and install dependencies (`lerna bootstrap` or `npm install`).
