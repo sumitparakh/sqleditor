@@ -53,7 +53,7 @@ Ofcourse every framework has its own pros and cons. But since, I'm mostly experi
 
 <h2>Features</h2>
 
-1. Run simple select queryies (eg. `select * from order_sample` or `select <col-1>, <col-2> from order_sample`). Current SQL parse is built based on mocked data and a fake json sql server, so. Based on data platform, parsing can be enhanced in future accordingly.
+1. Run simple select queryies (eg. `select * from order_sample` or `select <col-1>, <col-2> from order_sample`). Current SQL parser is built based on mocked data and a fake json sql server, so. Based on data platform, parsing can be enhanced in future accordingly.
 
 2. You can `create as many query editor as you want`. Query will be executed from currently active query editor tab.
 
@@ -107,7 +107,7 @@ Ofcourse every framework has its own pros and cons. But since, I'm mostly experi
 
 <u><strong>For Linux</strong></u>
 
-<strong>Note:</strong> Should work but not tested. Let me know if you face any issue. I'll try and fix. Or if you are a mac user and want to fix it yourself? Pull requets are always appreciated.
+<strong>Note:</strong> Should work but not tested. Let me know if you face any issue. I'll try and fix. Or if you are a linux user and want to fix it yourself? Pull requets are always appreciated.
 
 
 
