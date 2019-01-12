@@ -5,6 +5,7 @@
     "lerna": "^3.8.0"
   },
   "scripts": {
+    "postinstall": "lerna bootstrap",
     "start:ui": "cd packages/sqleditor-ui && npm run start",
     "build:ui": "cd packages/sqleditor-ui && npm run build",
     "package:app:win32:ia32": "npm run build:ui && cd packages/sqleditor-app && npm run package:app:win:ia32",
