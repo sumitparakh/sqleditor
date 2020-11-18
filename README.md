@@ -124,4 +124,4 @@ Ofcourse every framework has its own pros and cons. But since, I'm mostly experi
 <br><br>
 You are welcome to contribute to this project. This project is in its early stage, no feature is frozen yet. All suggestions/fixes/help are more than welcome. Raise your issue or feature request <a href="https://github.com/sumitparakh/sqleditor/issues/new" target="_blank">here</a>
 
-Please contact me ([@sumitparakh](https://twitter.com/sumitparak)) if you need some help getting started with the setup.
+Please contact me ([@sumitparakh](https://twitter.com/sumitparak)) if you need some help getting started with the setup..
